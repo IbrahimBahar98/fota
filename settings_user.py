@@ -71,6 +71,7 @@ class UserConfig:
     class _pull_mode:
         pu = "PU"  # Internal Pull-Up (Normally High)
         pd = "PD"  # Internal Pull-Down (Normally Low)
+        pdis = "PULL_DISABLE" # No internal pull-up or pull-down
 
     debug = 1
 
@@ -134,22 +135,22 @@ class UserConfig:
     sw_mqtt_post = 1
 
     buttons = {
-        "refill": {"pin": 7, "led_pin": 4, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "refill_request", "values": ["False", "True"]},
-        "door": {"pin": 20, "type": _button_type.level, "pull": _pull_mode.pu, "key": "door_state", "values": ["Closed", "Open"]},
-        "maintenance": {"pin": 9, "led_pin": 3, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "maintenance_state", "values": ["True", "False"]},
-        "power": {"pin": 2, "led_pin": 1, "type": _button_type.level, "pull": _pull_mode.pu, "key": "power_state", "values": ["True", "False"]},
-        "poll_interval_ms": 100
+        "refill": {"pin": 7, "led_pin": 4, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "refill_request", "values": ["True", "False"]},
+        "door": {"pin": 20, "led_pin": None, "type": _button_type.level, "pull": _pull_mode.pu, "key": "door_state", "values": ["Closed", "Open"]},
+        "maintenance": {"pin": 9, "led_pin": 3, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "maintenance_request", "values": ["False", "True"]},
+        "power": {"pin": 2, "led_pin": 1, "type": _button_type.level, "pull": _pull_mode.pdis, "key": "power_state", "values": ["False", "True"]},
+        "poll_interval_ms": 50
     }
 
     http_config = {
         "url": "https://interactivemap-1-fhc0.onrender.com/api/location",
-        "car_id": "EC200U-01",
+        "car_id": "EC200U-100",
         "sw_http_post": 0
     }
 
     sensor_config = {
-        "type": _sensor_type.aht10,  # Default to aht10
+        "type": _sensor_type.uart,  # Default to aht10
         "pin": 0,                   # GPIO for DHT22
-        "i2c_port": 1,               # Bus for AHT10
-        "uart_port": 0,              # Port for UART sensor
+        "i2c_port": 0,               # Bus for AHT10 (I2C0 — proven in diag)
+        "uart_port": 2,              # Port for UART sensor
     }
