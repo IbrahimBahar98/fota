@@ -138,7 +138,7 @@ class UserConfig:
         "refill": {"pin": 7, "led_pin": 4, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "refill_request", "values": ["False", "True"]},
         "door": {"pin": 20, "led_pin": None, "type": _button_type.level, "pull": _pull_mode.pu, "key": "door_state", "values": ["Closed", "Open"]},
         "maintenance": {"pin": 19, "led_pin": 3, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "maintenance_request", "values": ["False", "True"]},
-        "power": {"pin": 2, "led_pin": 1, "type": _button_type.level, "pull": _pull_mode.pdis, "key": "power_state", "values": ["Power_ON", "Power_OFF"], "invert_led": False},
+        "power": {"pin": 2, "led_pin": 1, "type": _button_type.level, "pull": _pull_mode.pdis, "key": "power_state", "values": ["Power ON", "Power OFF"], "invert_led": False},
         "poll_interval_ms": 25
     }
 
