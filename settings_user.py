@@ -113,7 +113,7 @@ class UserConfig:
 
     loc_method = _loc_method.all
 
-    loc_gps_read_timeout = 300
+    loc_gps_read_timeout = 3000
 
     work_mode = _work_mode.cycle
 
@@ -135,21 +135,21 @@ class UserConfig:
     sw_mqtt_post = 1
 
     buttons = {
-        "refill": {"pin": 7, "led_pin": 4, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "refill_request", "values": ["True", "False"]},
+        "refill": {"pin": 7, "led_pin": 4, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "refill_request", "values": ["False", "True"]},
         "door": {"pin": 20, "led_pin": None, "type": _button_type.level, "pull": _pull_mode.pu, "key": "door_state", "values": ["Closed", "Open"]},
-        "maintenance": {"pin": 9, "led_pin": 3, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "maintenance_request", "values": ["False", "True"]},
-        "power": {"pin": 2, "led_pin": 1, "type": _button_type.level, "pull": _pull_mode.pdis, "key": "power_state", "values": ["False", "True"]},
-        "poll_interval_ms": 50
+        "maintenance": {"pin": 19, "led_pin": 3, "type": _button_type.toggle, "pull": _pull_mode.pu, "key": "maintenance_request", "values": ["False", "True"]},
+        "power": {"pin": 2, "led_pin": 1, "type": _button_type.level, "pull": _pull_mode.pdis, "key": "power_state", "values": ["Power_ON", "Power_OFF"], "invert_led": False},
+        "poll_interval_ms": 25
     }
 
     http_config = {
         "url": "https://interactivemap-1-fhc0.onrender.com/api/location",
-        "car_id": "EC200U-100",
-        "sw_http_post": 0
+        "car_id": "EC200U-01",
+        "sw_http_post": 1
     }
 
     sensor_config = {
-        "type": _sensor_type.uart,  # Default to aht10
+        "type": _sensor_type.aht10,  # Default to aht10
         "pin": 0,                   # GPIO for DHT22
         "i2c_port": 0,               # Bus for AHT10 (I2C0 — proven in diag)
         "uart_port": 2,              # Port for UART sensor
