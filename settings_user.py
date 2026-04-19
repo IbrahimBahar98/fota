@@ -144,7 +144,7 @@ class UserConfig:
 
     http_config = {
         "url": "https://interactivemap-1-fhc0.onrender.com/api/location",
-        "car_id": "EC200U-1000",
+        "car_id": "VCola_Fridge",
         "sw_http_post": 1
     }
 
